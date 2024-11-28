@@ -39,7 +39,7 @@ CREATE TABLE netflix
 
 Business Problems and Solutions
 
-##1. Count the Number of Movies vs TV Shows
+## 1. Count the Number of Movies vs TV Shows
 
 ```sql
 SELECT 
@@ -50,7 +50,7 @@ GROUP BY 1;
 ```
 Objective: Determine the distribution of content types on Netflix.
 
-##2. Find the Most Common Rating for Movies and TV Shows
+## 2. Find the Most Common Rating for Movies and TV Shows
 
 ```sql
 WITH RatingCounts AS (
@@ -77,7 +77,7 @@ WHERE rank = 1;
 ```
 ##Objective: Identify the most frequently occurring rating for each type of content.
 
-3. List All Movies Released in a Specific Year (e.g., 2020)
+## 3. List All Movies Released in a Specific Year (e.g., 2020)
 ```sql
 SELECT * 
 FROM netflix
@@ -85,7 +85,7 @@ WHERE release_year = 2020;
 ```
 Objective: Retrieve all movies released in a specific year.
 
-##4. Find the Top 5 Countries with the Most Content on Netflix
+## 4. Find the Top 5 Countries with the Most Content on Netflix
 ```sql
 SELECT * 
 FROM
@@ -102,7 +102,7 @@ LIMIT 5;
 ```
 Objective: Identify the top 5 countries with the highest number of content items.
 
-##5. Identify the Longest Movie
+## 5. Identify the Longest Movie
 ```sql
 SELECT 
     *
@@ -112,7 +112,7 @@ ORDER BY SPLIT_PART(duration, ' ', 1)::INT DESC;
 ```
 Objective: Find the movie with the longest duration.
 
-##6. Find Content Added in the Last 5 Years
+## 6. Find Content Added in the Last 5 Years
 ```sql
 SELECT *
 FROM netflix
@@ -120,7 +120,7 @@ WHERE TO_DATE(date_added, 'Month DD, YYYY') >= CURRENT_DATE - INTERVAL '5 years'
 ```
 Objective: Retrieve content added to Netflix in the last 5 years.
 
-##7. Find All Movies/TV Shows by Director 'Barbra Streisand'
+## 7. Find All Movies/TV Shows by Director 'Barbra Streisand'
 ```sql
 
 SELECT *
@@ -129,7 +129,7 @@ WHERE director ILIKE '%Barbra Streisand%'
 ```
 Objective: List all content directed by 'Rajiv Chilaka'.
 
-##8. List All TV Shows with More Than 5 Seasons
+## 8. List All TV Shows with More Than 5 Seasons
 ```sql
 SELECT *
 FROM netflix
@@ -138,7 +138,7 @@ WHERE type = 'TV Show'
 ```
 Objective: Identify TV shows with more than 5 seasons.
 
-##9. Count the Number of Content Items in Each Genre
+## 9. Count the Number of Content Items in Each Genre
 ```sql
 SELECT 
     UNNEST(STRING_TO_ARRAY(listed_in, ',')) AS genre,
@@ -148,7 +148,7 @@ GROUP BY 1;
 ```
 Objective: Count the number of content items in each genre.
 
-##10.Find each year and the average numbers of content release in India on netflix.
+## 10.Find each year and the average numbers of content release in India on netflix.
 
 return top 5 year with highest avg content release!
 ```sql
@@ -164,28 +164,28 @@ LIMIT 5;
 ```
 Objective: Calculate and rank years by the average number of content releases by India.
 
-##11. List All Movies that are Documentaries
+## 11. List All Movies that are Documentaries
 ```sql
 SELECT * 
 FROM netflix
 WHERE listed_in LIKE '%documentaries';
 ```
 Objective: Retrieve all movies classified as documentaries.
-##12. Find All Content Without a Director
+## 12. Find All Content Without a Director
 ```sql
 SELECT * 
 FROM netflix
 WHERE director IS NULL;
 ```
 Objective: List content that does not have a director.
-##13. Find How Many Movies Actor 'Hugh Jackman' Appeared in the Last 20 Years
+## 13. Find How Many Movies Actor 'Hugh Jackman' Appeared in the Last 20 Years
 ```sql
 SELECT * 
 FROM netflix
 WHERE casts ILIKE '%Hugh Jackman%' AND release_year > EXTRACT(YEAR FROM CURRENT_DATE) - 20
 ```
 Objective: Count the number of movies featuring 'Salman Khan' in the last 10 years.
-##14. Find the Top 10 Actors Who Have Appeared in the Highest Number of Movies Produced in Australia
+## 14. Find the Top 10 Actors Who Have Appeared in the Highest Number of Movies Produced in Australia
 ```sql
 SELECT
 	UNNEST(STRING_TO_ARRAY(casts,',')),
@@ -197,7 +197,7 @@ ORDER BY 2 DESC
 LIMIT 10;
 ```
 Objective: Identify the top 10 actors with the most appearances in Australian-produced movies.
-##15. Categorize Content Based on the Presence of 'Kill' and 'Violence' Keywords
+## 15. Categorize Content Based on the Presence of 'Kill' and 'Violence' Keywords
 ```sql
 SELECT 
     category,
